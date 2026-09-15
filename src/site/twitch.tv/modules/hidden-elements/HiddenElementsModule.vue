@@ -38,6 +38,12 @@ export const config = [
 		hint: "If checked, the 'Send a message' chatbox will be hidden (WARNING! the 7tv icon will disappear but can be accessed again at the top right of Twitch)",
 		defaultValue: false,
 	}),
+	declareConfig("layout.hide_chat_input_send_button", "TOGGLE", {
+		path: ["Site Layout", "Chat"],
+		label: "Hide Chat Button",
+		hint: "If checked, the Chat send button in the chat input area will be hidden",
+		defaultValue: false,
+	}),
 	declareConfig("layout.hide_buttons_below_chatbox", "TOGGLE", {
 		path: ["Site Layout", "Chat"],
 		label: "Hide Buttons Below Chatbox",
@@ -105,6 +111,12 @@ export const config = [
 		hint: "If checked, the 'Unfollow' button will be hidden (under stream and in theater mode)",
 		defaultValue: false,
 	}),
+	declareConfig("layout.hide_combos_button", "TOGGLE", {
+		path: ["Site Layout", "Twitch Features"],
+		label: "Hide Combos Button",
+		hint: "If checked, the 'Combos' button (aka quick bits) will be hidden (under stream)",
+		defaultValue: false,
+	}),
 	declareConfig("layout.hide_live_notification_button", "TOGGLE", {
 		path: ["Site Layout", "Twitch Features"],
 		label: "Hide Live Notification Button",
@@ -122,6 +134,12 @@ export const config = [
 		path: ["Site Layout", "Sidebar"],
 		label: "Hide Recommended Channels",
 		hint: "If checked, the 'recommended channels' section of the side bar will be hidden",
+		defaultValue: false,
+	}),
+	declareConfig("layout.hide_live_channels", "TOGGLE", {
+		path: ["Site Layout", "Sidebar"],
+		label: "Hide Live Channels",
+		hint: "If checked, the 'Live Channels' section of the side bar will be hidden",
 		defaultValue: false,
 	}),
 	declareConfig("layout.hide_viewers_also_watch", "TOGGLE", {
@@ -182,6 +200,12 @@ export const config = [
 	}
 }
 
+.seventv-hide-chat-input-send-button {
+	button[data-a-target="chat-send-button"] {
+		display: none !important;
+	}
+}
+
 .seventv-hide-stream-chat-bar {
 	button[data-a-target="right-column__toggle-collapse-btn"],
 	div[class$="stream-chat-header"] {
@@ -224,8 +248,13 @@ export const config = [
 	div[class^="community-highlight-stack"] {
 		display: none !important;
 	}
+
+	div[class^="community-highlight"] {
+		display: none !important;
+	}
 }
 
+/* stylelint-disable */
 .seventv-hide-community-challenge-contributions {
 	div[msg-id*="community-challenge-contribution"] {
 		display: none !important;
@@ -277,38 +306,6 @@ export const config = [
 	}
 }
 
-.seventv-hide-viewers-also-watch {
-	div[class$="side-nav--collapsed"]
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(3)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(2)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(4) {
-		display: none !important;
-	}
-
-	div[class$="side-nav--expanded"]
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(3)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(2)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(1)
-		> *:nth-child(5) {
-		display: none !important;
-	}
-}
-
 .seventv-hide-prime-offers {
 	div[class$="top-nav__prime"] {
 		display: none !important;
@@ -321,15 +318,47 @@ export const config = [
 	}
 }
 
-.seventv-hide-live-notification-button {
-	button[data-a-target="notifications-toggle"] {
+.seventv-hide-viewers-also-watch div[class*="side-nav--"] div > div:nth-child(1) > div:nth-child(5),
+.seventv-hide-viewers-also-watch #side-nav > div > div:nth-child(1) > div:nth-child(5) {
+	display: none !important;
+}
+
+.seventv-hide-live-channels {
+	div[class$="side-nav--collapsed"] div > div:nth-child(1) > div:nth-child(4),
+	div[class$="side-nav--expanded"] div > div:nth-child(1) > div:nth-child(4),
+	#side-nav > div > div:nth-child(1) > div:nth-child(4) {
 		display: none !important;
 	}
 }
 
-.seventv-hide-subscribe-button {
-	button[data-a-target="subscribed-button"],
-	button[data-a-target="subscribe-button"] {
+.seventv-hide-combos-buttons
+	#live-channel-stream-information
+	> div
+	> div
+	> div:nth-child(2)
+	> div:nth-child(3)
+	> div:nth-child(1) {
+	display: none !important;
+}
+
+.seventv-hide-live-notification-button {
+	button[data-a-target="notifications-toggle"] {
+		display: none !important;
+	}
+
+	#live-channel-stream-information
+		> div
+		> div
+		> div:nth-child(2)
+		> div:nth-child(2)
+		> div:nth-child(1)
+		> div:nth-child(2)
+		> div
+		> div:nth-child(1)
+		> div
+		> div:nth-child(2)
+		> div
+		> div:nth-child(2) {
 		display: none !important;
 	}
 }
@@ -346,7 +375,6 @@ export const config = [
 	}
 }
 
-/* stylelint-disable */
 .seventv-hide-player-ext {
 	.video-player .extension-taskbar,
 	.video-player .extension-container,

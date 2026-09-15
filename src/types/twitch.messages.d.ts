@@ -8,6 +8,7 @@ declare namespace Twitch {
 		user?: ChatUser | null;
 		message?: ChatMessage;
 		badges?: Record<string, string>;
+		badgeDynamicData?: Record<string, string>;
 		isHistorical: unknown;
 		nonce?: string;
 
@@ -50,7 +51,7 @@ declare namespace Twitch {
 
 	export interface ChatMessage extends AnyMessage {
 		user: ChatUser;
-		badgeDynamicData: object;
+		badgeDynamicData: Record<string, string>;
 		badges: Record<string, string>;
 		banned: boolean;
 		bits: number;
@@ -175,6 +176,14 @@ declare namespace Twitch {
 				// Only exists if cheermote
 				cheerAmount?: number;
 				cheerColor?: string;
+			};
+		}
+
+		export interface GifPart extends Part {
+			content: {
+				id: string;
+				title: string;
+				url: string;
 			};
 		}
 

@@ -13,12 +13,15 @@ const hideTimestampsVods = useConfig<boolean>("chat.hide_timestamps_vods");
 const hideCommunityHighlights = useConfig<boolean>("layout.hide_community_highlights");
 const hideCommunityChallengeContributions = useConfig<boolean>("layout.hide_community_challenge_contributions");
 const hideRecommendedChannels = useConfig<boolean>("layout.hide_recommended_channels");
+const hideLiveChannels = useConfig<boolean>("layout.hide_live_channels");
 const hideViewersAlsoWatch = useConfig<boolean>("layout.hide_viewers_also_watch");
 const hidePrimeOffers = useConfig<boolean>("layout.hide_prime_offers");
 const hideUnfollowButton = useConfig<boolean>("layout.hide_unfollow_button");
+const hideCombosButton = useConfig<boolean>("layout.hide_combos_button");
 const hideLiveNotificationButton = useConfig<boolean>("layout.hide_live_notification_button");
 const hideSubscribeButton = useConfig<boolean>("layout.hide_subscribe_button");
 const hideChatInputBox = useConfig<boolean>("layout.hide_chat_input_box");
+const hideChatInputSendButton = useConfig<boolean>("layout.hide_chat_input_send_button");
 const hidePlayerExtensions = useConfig<boolean>("player.hide_player_extensions");
 const hideChannelPointBalanceButton = useConfig<boolean>("layout.hide_channel_point_balance_button");
 const hideOnscreenCelebrations = useConfig<boolean>("player.hide_onscreen_celebrations");
@@ -37,12 +40,15 @@ export const hiddenElementSettings: Array<{ class: string; isHidden: Ref<boolean
 	{ class: "seventv-hide-community-highlights", isHidden: hideCommunityHighlights },
 	{ class: "seventv-hide-community-challenge-contributions", isHidden: hideCommunityChallengeContributions },
 	{ class: "seventv-hide-recommended-channels", isHidden: hideRecommendedChannels },
+	{ class: "seventv-hide-live-channels", isHidden: hideLiveChannels },
 	{ class: "seventv-hide-viewers-also-watch", isHidden: hideViewersAlsoWatch },
 	{ class: "seventv-hide-prime-offers", isHidden: hidePrimeOffers },
 	{ class: "seventv-hide-unfollow-button", isHidden: hideUnfollowButton },
 	{ class: "seventv-hide-live-notification-button", isHidden: hideLiveNotificationButton },
+	{ class: "seventv-hide-combos-buttons", isHidden: hideCombosButton },
 	{ class: "seventv-hide-subscribe-button", isHidden: hideSubscribeButton },
 	{ class: "seventv-hide-chat-input-box", isHidden: hideChatInputBox },
+	{ class: "seventv-hide-chat-input-send-button", isHidden: hideChatInputSendButton },
 	{ class: "seventv-hide-player-ext", isHidden: hidePlayerExtensions },
 	{ class: "seventv-hide-channel-point-balance-button", isHidden: hideChannelPointBalanceButton },
 	{ class: "seventv-hide-onscreen-celebrations", isHidden: hideOnscreenCelebrations },

@@ -40,6 +40,7 @@
 			:user="msg.author"
 			:source-data="msg.sourceData"
 			:badges="msg.badges"
+			:badge-data="msg.badgeData"
 			:msg-id="msg.sym"
 			@open-native-card="openViewerCard($event, msg.author.username, msg.id)"
 		/>
@@ -65,6 +66,7 @@
 						{{ token.content.cheerAmount }}
 					</span>
 				</span>
+				<MessageTokenGif v-else-if="IsGifToken(token)" :token="token" />
 				<template v-else>
 					<component :is="getToken(token)" v-bind="{ token, msg }" />
 				</template>
@@ -95,7 +97,7 @@ import { useTimeoutFn } from "@vueuse/shared";
 import { SetHexAlpha } from "@/common/Color";
 import { log } from "@/common/Logger";
 import type { AnyToken, ChatMessage, ChatUser } from "@/common/chat/ChatMessage";
-import { IsEmoteToken, IsLinkToken, IsMentionToken } from "@/common/type-predicates/MessageTokens";
+import { IsEmoteToken, IsGifToken, IsLinkToken, IsMentionToken } from "@/common/type-predicates/MessageTokens";
 import { useChannelContext } from "@/composable/channel/useChannelContext";
 import { useChatModeration } from "@/composable/chat/useChatModeration";
 import { useChatProperties } from "@/composable/chat/useChatProperties";
@@ -106,6 +108,7 @@ import type { TimestampFormatKey } from "@/site/twitch.tv/modules/chat/ChatModul
 import ModIcons from "@/site/twitch.tv/modules/chat/components/mod/ModIcons.vue";
 import Emote from "./Emote.vue";
 import EmoteLinkEmbed from "./EmoteLinkEmbed.vue";
+import MessageTokenGif from "./MessageTokenGif.vue";
 import MessageTokenLink from "./MessageTokenLink.vue";
 import MessageTokenMention from "./MessageTokenMention.vue";
 import RichEmbed from "./RichEmbed.vue";

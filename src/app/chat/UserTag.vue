@@ -83,6 +83,7 @@ import { useEloWardRanks } from "@/site/twitch.tv/modules/eloward/composables/us
 import type { EloWardBadge as EloWardBadgeType } from "@/site/twitch.tv/modules/eloward/composables/useEloWardRanks";
 import { useGameDetection } from "@/site/twitch.tv/modules/eloward/composables/useGameDetection";
 import Badge from "./Badge.vue";
+import Badge, { TwitchChatBadgeWithData } from "./Badge.vue";
 import UserCard from "./UserCard.vue";
 import UiDraggable from "@/ui/UiDraggable.vue";
 import { autoPlacement, shift } from "@floating-ui/dom";
@@ -97,6 +98,7 @@ const props = withDefaults(
 		hideBadges?: boolean;
 		clickable?: boolean;
 		badges?: Record<string, string>;
+		badgeData?: Record<string, string>;
 	}>(),
 	{
 		clickable: true,
@@ -119,7 +121,7 @@ const cosmetics = useCosmetics(props.user.id);
 const shouldRenderPaint = useConfig<boolean>("vanity.nametag_paints");
 const shouldRender7tvBadges = useConfig<boolean>("vanity.7tv_Badges");
 const betterUserCardEnabled = useConfig<boolean>("chat.user_card");
-const twitchBadges = ref<Twitch.ChatBadge[]>([]);
+const twitchBadges = ref<TwitchChatBadgeWithData[]>([]);
 const twitchBadgeSets = toRef(properties, "twitchBadgeSets");
 const mentionStyle = useConfig<MentionStyle>("chat.colored_mentions");
 
@@ -173,7 +175,7 @@ watchEffect(() => {
 				const badge = set.get(badgeID);
 				if (!badge) continue;
 
-				twitchBadges.value.push(badge);
+				twitchBadges.value.push({ ...badge, data: props.badgeData?.[badge.setID] });
 				break;
 			}
 		}

@@ -1,6 +1,65 @@
 ### 3.1.16.1000
 
 -   Added EloWard League of Legends rank badges module
+## 3.1.25.1000
+
+-   Fixed Kick Emote Menu position
+-   Updated 7TV API logic
+
+### 3.1.24.1000
+
+-   Added full support for Twitch GIF messages
+
+### 3.1.23.1000
+
+-   Added setting to hide Twitch "Chat" send button under the chat input box
+-   Fixed an issue that caused the Mod View + Shield Mode buttons to not show
+-   Fixed an issue where Chat Settings tooltip would display when hovering Mod Logs button
+
+### 3.1.22.1000
+
+-   Fixed an issue that caused chat input to break after a Twitch update
+
+### 3.1.21.1000
+
+-   Added new extension notice
+-   Added checks to see if new extension is running
+-   Updated extension description
+
+### 3.1.20.2000
+
+-   Fixed an issue causing emote cards to not display all info
+
+### 3.1.20.1000
+
+-   Fixed some lint issues
+-   Bump version to 3.1.20
+
+### 3.1.19.1000
+
+-   Fixed some lint issues and some selectors not working
+
+### 3.1.18.1000
+
+-   Fixed a conflict issue with 7TV extension and FFZ running at the same time
+
+### 3.1.17.1000
+
+-   April fools effects joke 2026
+-   Fixed steam latency information not being displayed correctly
+-   Added initial Lead Moderator functionallity
+-   Fixed other small bugs
+
+### 3.1.16.2000
+
+-   Updated Firefox extension URL in onboarding
+-   Added tier and tenure to Twitch subscriber badge tooltips
+
+### 3.1.16.1000
+
+-   Fixed emote menu not showing emotes with same name but different casing
+-   Fixed animated avatars not working
+-   Bump package version to 3.1.16
 
 ### 3.1.15.1000
 
