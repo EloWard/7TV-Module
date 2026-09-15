@@ -238,6 +238,10 @@ const initializeEloWardBadge = () => {
 	elowardRanks
 		.fetchRankData(username)
 		.then((rankData) => {
+			// The stream's category or the setting can change while the request is in flight
+			if (username !== props.user.username || !elowardEnabled.value || !gameDetection.isLeagueStream.value)
+				return;
+
 			elowardBadge.value = rankData ? elowardRanks.getRankBadge(rankData) : null;
 		})
 		.catch(() => {
