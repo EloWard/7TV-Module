@@ -126,12 +126,12 @@ const handleClick = () => {
 // Theme adjustments. The whole selector goes inside :global(), otherwise only the theme class
 // survives compilation and the filter lands on the entire Twitch page.
 /* stylelint-disable-next-line selector-class-pattern */
-:global(.tw-root--theme-dark .eloward-rank-badge) {
+:global(.tw-root--theme-dark .seventv-chat-badge.eloward-rank-badge) {
 	filter: brightness(0.95);
 }
 
 /* stylelint-disable-next-line selector-class-pattern */
-:global(.tw-root--theme-light .eloward-rank-badge) {
+:global(.tw-root--theme-light .seventv-chat-badge.eloward-rank-badge) {
 	filter: brightness(1.05) contrast(1.1);
 }
 </style>
