@@ -82,7 +82,6 @@ import EloWardBadge from "@/site/twitch.tv/modules/eloward/components/EloWardBad
 import { useEloWardRanks } from "@/site/twitch.tv/modules/eloward/composables/useEloWardRanks";
 import type { EloWardBadge as EloWardBadgeType } from "@/site/twitch.tv/modules/eloward/composables/useEloWardRanks";
 import { useGameDetection } from "@/site/twitch.tv/modules/eloward/composables/useGameDetection";
-import Badge from "./Badge.vue";
 import Badge, { TwitchChatBadgeWithData } from "./Badge.vue";
 import UserCard from "./UserCard.vue";
 import UiDraggable from "@/ui/UiDraggable.vue";
