@@ -216,7 +216,8 @@ const initializeEloWardBadge = () => {
 		return;
 	}
 
-	if (!elowardEnabled.value || !gameDetection.isLeagueStream.value) {
+	// Badges are never shown for mentions or the user card header, so don't look them up
+	if (props.hideBadges || !elowardEnabled.value || !gameDetection.isLeagueStream.value) {
 		elowardBadge.value = null;
 		return;
 	}
@@ -261,11 +262,7 @@ watch(() => gameDetection.isLeagueStream.value, initializeEloWardBadge);
 	padding: 0.2rem;
 
 	.seventv-chat-user-badge-list {
-		display: inline-flex !important;
-		align-items: center !important;
-		vertical-align: baseline !important;
-		gap: 0 !important;
-		margin-right: 0 !important;
+		margin-right: 0.25em;
 
 		:deep(img) {
 			vertical-align: middle;
@@ -278,11 +275,6 @@ watch(() => gameDetection.isLeagueStream.value, initializeEloWardBadge);
 
 	.seventv-chat-user-username {
 		font-weight: 700;
-	}
-
-	// Username spacing after badge list
-	.seventv-chat-user-badge-list + .seventv-chat-user-username {
-		margin-left: 2px !important;
 	}
 }
 

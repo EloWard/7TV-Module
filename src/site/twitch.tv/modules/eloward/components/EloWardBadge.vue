@@ -62,7 +62,7 @@ const handleClick = () => {
 	});
 
 	if (url) {
-		window.open(url, "_blank");
+		window.open(url, "_blank", "noopener,noreferrer");
 	}
 };
 </script>
@@ -121,16 +121,5 @@ const handleClick = () => {
 
 .eloward-challenger .eloward-badge-img {
 	transform: scale(1.15);
-}
-
-// Theme adjustments
-/* stylelint-disable-next-line selector-class-pattern */
-:global(.tw-root--theme-dark) .seventv-chat-badge.eloward-rank-badge {
-	filter: brightness(0.95);
-}
-
-/* stylelint-disable-next-line selector-class-pattern */
-:global(.tw-root--theme-light) .seventv-chat-badge.eloward-rank-badge {
-	filter: brightness(1.05) contrast(1.1);
 }
 </style>

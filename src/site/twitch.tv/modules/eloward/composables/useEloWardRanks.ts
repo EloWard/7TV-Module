@@ -153,7 +153,7 @@ export function useEloWardRanks() {
 			try {
 				isLoading.value = true;
 
-				const response = await fetch(`${API_BASE_URL}/${normalizedUsername}`, {
+				const response = await fetch(`${API_BASE_URL}/${encodeURIComponent(normalizedUsername)}`, {
 					method: "GET",
 					headers: {
 						Accept: "application/json",
@@ -166,7 +166,9 @@ export function useEloWardRanks() {
 					return null;
 				}
 
+				// Cache failures too, otherwise every new message retries while the API is down
 				if (!response.ok) {
+					rankCache.set(normalizedUsername, null);
 					return null;
 				}
 
@@ -189,6 +191,7 @@ export function useEloWardRanks() {
 				rankCache.set(normalizedUsername, rankData);
 				return rankData;
 			} catch (error) {
+				rankCache.set(normalizedUsername, null);
 				return null;
 			} finally {
 				isLoading.value = false;

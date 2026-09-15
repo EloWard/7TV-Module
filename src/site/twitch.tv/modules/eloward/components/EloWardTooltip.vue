@@ -30,19 +30,7 @@ const props = defineProps<{
 
 const elowardRanks = useEloWardRanks();
 
-const rankText = computed(() => {
-	let text = props.badge.tier;
-
-	if (props.badge.division && !["MASTER", "GRANDMASTER", "CHALLENGER"].includes(props.badge.tier)) {
-		text += ` ${props.badge.division}`;
-	}
-
-	if (props.badge.leaguePoints !== undefined && props.badge.leaguePoints !== null) {
-		text += ` - ${props.badge.leaguePoints} LP`;
-	}
-
-	return text;
-});
+const rankText = computed(() => elowardRanks.formatRankText(props.badge));
 
 const regionDisplay = computed(() => {
 	if (!props.badge.region) return "";
@@ -108,40 +96,6 @@ const regionDisplay = computed(() => {
 			padding-top: 4px;
 			border-top: 1px solid var(--color-border-base);
 		}
-	}
-}
-
-// Dark theme
-/* stylelint-disable-next-line selector-class-pattern */
-:global(.tw-root--theme-dark) .eloward-tooltip-content {
-	.eloward-rank-line {
-		color: #efeff1;
-	}
-
-	.eloward-summoner-line {
-		color: #adadb8;
-	}
-
-	.eloward-region-line,
-	.eloward-hint {
-		color: #848494;
-	}
-}
-
-// Light theme
-/* stylelint-disable-next-line selector-class-pattern */
-:global(.tw-root--theme-light) .eloward-tooltip-content {
-	.eloward-rank-line {
-		color: #0e0e10;
-	}
-
-	.eloward-summoner-line {
-		color: #53535f;
-	}
-
-	.eloward-region-line,
-	.eloward-hint {
-		color: #848494;
 	}
 }
 </style>
